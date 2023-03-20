@@ -53,6 +53,7 @@ def gamma_correction(i, g,gamma=True):
     return img
 
 def rotate_bound(image, angle):
+    #绕图像中心旋转,得到的图像大小刚好包括图像内容
     # grab the dimensions of the image and then determine the
     # center
     (h, w) = image.shape[:2]
@@ -61,7 +62,7 @@ def rotate_bound(image, angle):
     # grab the rotation matrix (applying the negative of the
     # angle to rotate clockwise), then grab the sine and cosine
     # (i.e., the rotation components of the matrix)
-    M = cv.getRotationMatrix2D((cX, cY), -angle, 1.0)
+    M = cv.getRotationMatrix2D((cX, cY), -angle, 1.0)#顺时针旋转angle度(非弧度)
     cos = np.abs(M[0, 0])
     sin = np.abs(M[0, 1])
 
